@@ -1,0 +1,91 @@
+/* background & base text color */
+body {
+	@apply bg-light dark:bg-dark text-dark dark:text-light selection:bg-dark selection:text-light dark:selection:bg-light dark:selection:text-dark;
+}
+
+/* border colors */
+.border-color-100 {
+	@apply border-light focus:border-light;
+}
+.border-color-50 {
+	@apply border-light/50 focus:border-light/50;
+}
+.border-color-20 {
+	@apply border-light/20 focus:border-light/30;
+}
+.border-color-10 {
+	@apply border-light/10 focus:border-light/10;
+}
+.bg-light {
+	.border-color-100 {
+		@apply border-dark focus:border-dark;
+	}
+	.border-color-50 {
+		@apply border-dark/50 focus:border-dark/50;
+	}
+	.border-color-20 {
+		@apply border-dark/20 focus:border-dark/30;
+	}
+	.border-color-10 {
+		@apply border-dark/10 focus:border-dark/20;
+	}
+}
+
+/* text colors */
+.text-color-100 {
+	@apply text-light;
+}
+.text-color-50 {
+	@apply text-light/50;
+}
+.bg-light {
+	.text-color-100 {
+		@apply text-dark;
+	}
+	.text-color-50 {
+		@apply text-dark/75;
+	}
+}
+
+/* tables */
+table {
+	thead,
+	tbody,
+	tfoot {
+		th,
+		td {
+			@apply border-light/20;
+		}
+	}
+}
+
+/* forms */
+input,
+select,
+textarea {
+	@apply bg-transparent border-dark dark:border-light text-dark dark:text-light placeholder:text-dark/70 dark:placeholder:text-light/70;
+}
+
+/* prose content elements */
+.prose {
+	@apply text-dark dark:text-light;
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply text-dark dark:text-light;
+	}
+	strong {
+	}
+	blockquote {
+		@apply border-light/50;
+	}
+	hr {
+		@apply border-light/20;
+	}
+}
+
+/* buttons */
+
+/* notifications */

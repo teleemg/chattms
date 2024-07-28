@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './lib/styles/base.css';
+@import './lib/styles/colors.css';
+@import './lib/styles/modals.css';
+@import './lib/styles/prose.css';
+@import './lib/styles/buttons.css';
+@import './lib/styles/custom.css';

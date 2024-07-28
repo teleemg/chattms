@@ -1,0 +1,255 @@
+/*
+    apply content and typography styles for the prose class on top of the base colors set in colors.css
+    this is my own implementation of "prose", not the tailwind typography plugin
+    check colors.css for prose color application
+*/
+
+/* sizing variants */
+
+.prose-xs {
+	@apply leading-relaxed text-[14px] md:text-[15px] lg:text-[16px] xl:text-[17px] 2xl:text-[18px] !important;
+}
+.prose-sm {
+	@apply leading-relaxed text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] !important;
+}
+.prose-md {
+	@apply leading-relaxed text-[17px] md:text-[20px] lg:text-[21px] xl:text-[22px] 2xl:text-[24px] !important;
+}
+.prose-lg {
+	@apply leading-relaxed text-[18px] md:text-[22px] lg:text-[26px] xl:text-[28px] 2xl:text-[30px] !important;
+}
+.prose-xl {
+	@apply leading-relaxed text-[18px] md:text-[22px] lg:text-[26px] xl:text-[28px] 2xl:text-[30px] !important;
+}
+.prose-xs,
+.prose-sm,
+.prose-md,
+.prose-lg,
+.prose-xl {
+	h1 {
+		@apply text-[2.5em] leading-tight;
+	}
+	h2 {
+		@apply text-[1.8em];
+	}
+	h3 {
+		@apply text-[1.5em];
+	}
+	h4 {
+		@apply text-[1.3em];
+	}
+}
+
+/* main prose class for relative sizing and spacing */
+.prose {
+	@apply max-w-none;
+
+	/* headings */
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply font-bold mt-[1.2em] mb-[0.6em];
+	}
+
+	/* paragraph & content elements */
+	p {
+		@apply mb-[1.5em] leading-[1.7];
+	}
+	a {
+		@apply underline;
+		&.btn {
+			@apply no-underline;
+		}
+	}
+	strong {
+		@apply font-bold;
+	}
+	b {
+		@apply font-bold;
+	}
+	em {
+		@apply italic;
+	}
+	small {
+		@apply text-[0.8em];
+	}
+	/* lists */
+	ol,
+	ul {
+		@apply ml-[1.5em] list-outside leading-[1.7];
+		li {
+		}
+	}
+	ol {
+		@apply list-decimal;
+	}
+	ul {
+		@apply list-disc;
+	}
+	blockquote {
+		@apply border-l-[0.25em] pl-[1.6em];
+	}
+	figure {
+		img {
+			@apply m-0;
+		}
+		figcaption {
+			@apply mt-[1em] text-[0.8em];
+		}
+	}
+	img {
+		@apply cursor-pointer;
+	}
+	mark {
+		@apply bg-transparent text-inherit;
+	}
+	ins {
+		@apply no-underline;
+	}
+	del {
+		@apply opacity-50;
+	}
+
+	/* tables */
+	.table-container {
+		@apply overflow-x-auto w-full scrollbar-none;
+		table {
+			@apply my-0;
+		}
+	}
+	table {
+		@apply w-full text-left text-[0.8em];
+		thead {
+		}
+		tbody {
+		}
+		tr {
+			th,
+			td {
+				@apply align-top p-[0.8em] border;
+			}
+			th {
+				@apply font-medium;
+			}
+		}
+	}
+
+	/* normal content element spacing */
+	ol,
+	ul {
+		@apply my-[1.5em];
+	}
+	hr {
+		@apply my-[3em];
+	}
+	img,
+	blockquote,
+	table,
+	.table-container,
+	.video-container,
+	iframe,
+	figure,
+	pre {
+		@apply my-[2.5em];
+	}
+
+	/* wordpress element spacing */
+	.gallery,
+	.wp-block-gallery,
+	.wp-block-code-container,
+	.wp-block-code,
+	.wp-caption,
+	.wp-block-buttons {
+		@apply my-[2.5em];
+	}
+	.wp-block-code-container {
+		.wp-block-code {
+			@apply m-0;
+		}
+	}
+
+	/* forms */
+	form {
+		label {
+			@apply block font-medium mb-[0.3em];
+			abbr {
+				@apply no-underline;
+			}
+			.optional {
+				@apply hidden;
+			}
+		}
+		.description {
+			@apply text-[0.8em] text-color-50 mb-[1em];
+		}
+		input[type='text'],
+		input[type='number'],
+		input[type='email'],
+		input[type='tel'],
+		input[type='password'],
+		textarea,
+		select {
+			@apply rounded-none block bg-dark/10 w-full px-5 py-4 outline-none appearance-none;
+		}
+		input[type='number'] {
+			@apply appearance-none;
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+			&[type='number'] {
+				-moz-appearance: textfield;
+			}
+		}
+		input[type='checkbox'] {
+		}
+		input[type='radio'] {
+		}
+	}
+	.g-recaptcha iframe {
+		margin: 0 !important;
+	}
+
+	/* removes margin top, mainly for headings when they're the first element in a container */
+	& > *:first-child,
+	& .container > *:first-child {
+		@apply mt-0 !important;
+	}
+	/* removes margin bottom on elements when they're the last element in a post content container */
+	& > *:last-child,
+	& .container > *:last-child {
+		@apply mb-0 !important;
+	}
+}
+
+/* custom adjustments for this project */
+/* .prose{
+
+    img,
+    iframe,
+    pre{
+        @apply w-full;
+    }
+    h1,h2,h3,h4,h5,h6{
+        @apply font-bold;
+    }
+    h1{
+        @apply text-[2em];
+    }
+    h2{
+        @apply text-[1.2em];
+    }
+    h3{
+        @apply text-[1em] mb-[0.5em];
+    }
+    h4{
+        @apply text-[1em] mb-[0.5em];
+    }
+
+    b,strong{
+        @apply font-semibold;
+    }
+
+} */
