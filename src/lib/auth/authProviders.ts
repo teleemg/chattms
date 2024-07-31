@@ -1,11 +1,14 @@
 
 import GitHub from '@auth/sveltekit/providers/github';
 import Postmark from '@auth/sveltekit/providers/postmark';
-import type { Provider } from "@auth/sveltekit/providers"
+import type { Provider } from "@auth/sveltekit/providers";
+import { PUBLIC_EMAIL_FROM_NOREPLY } from '$env/static/public';
 
 export const providers: Provider[] = [
     GitHub,
-    Postmark
+    Postmark({
+        from: PUBLIC_EMAIL_FROM_NOREPLY
+    })
 ]
 
 export const providerMap = providers.map((provider) => {

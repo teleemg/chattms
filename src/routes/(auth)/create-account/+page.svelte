@@ -5,8 +5,8 @@
 <div class="container max-w-[550px] flex flex-col gap-5">
     
     <div>
-        <h1 class="mb-2 text-2xl font-bold">Sign in</h1>
-        <p class="text-lg opacity-60">Select an option. We'll automatically create an account if you don't have one.</p>
+        <h1 class="mb-2 text-2xl font-bold">Create an account</h1>
+        <p class="text-lg opacity-60">Select a sign in method to create an account.</p>
     </div>
 
     <LoginOptions />

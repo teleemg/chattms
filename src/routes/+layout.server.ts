@@ -1,5 +1,3 @@
-
-
 import type { LayoutServerLoad } from './$types';
 
 // "Managing the session" - https://authjs.dev/reference/sveltekit

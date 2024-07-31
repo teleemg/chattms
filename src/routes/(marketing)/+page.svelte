@@ -185,7 +185,7 @@
                 <li class="flex items-center gap-3"><ArrowRight class="w-[1em] h-[1em]" /> No price increases with an active subscription</li>
                 <li class="flex items-center gap-3"><ArrowRight class="w-[1em] h-[1em]" /> 14 day money-back guarantee</li>
             </ul>
-            <a href="get-started" class="flex items-center mt-10 text-xl btn bg-light text-dark">Get started <ArrowRight class="w-[1.1em] h-[1.1em] ml-auto" /></a>
+            <a href="/create-account" class="flex items-center mt-10 text-xl btn bg-light text-dark">Get started <ArrowRight class="w-[1.1em] h-[1.1em] ml-auto" /></a>
         </div>
         <!-- <div class="flex flex-col p-10 border shadow-sm border-dark/10 rounded-2xl shadow-dark/10">
             <div>
