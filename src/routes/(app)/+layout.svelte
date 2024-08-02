@@ -16,12 +16,19 @@
     $: getPath($page.url.pathname);
 
 
-    let mainScreen: HTMLElement;
-    let sidebarLeft: HTMLElement;
-    let sidebarRight: HTMLElement;
-    let headerNav: HTMLElement;
-
-
+    onMount(async () => {
+        await loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
+        await loadScript('/scripts/menus.js');
+    });
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
 </script>
 
 <Announcement/>
@@ -68,7 +75,7 @@
         
         <div class="flex flex-col p-10 grow">
             <slot />
-            <div class="mt-gap">
+            <!-- <div class="mt-gap">
                 {#if $page.data.session}
                     <SignOut signOutPage="sign-out" className="">
                         <div slot="submitButton" class="border-2 btn bg-dark/10">Sign out</div>
@@ -78,7 +85,7 @@
                         <div slot="submitButton" class="border-2 btn bg-dark/10">Sign in</div>
                     </SignIn>
                 {/if}
-            </div>
+            </div> -->
         </div>
     </main> 
 </div>
@@ -97,6 +104,7 @@
 {/if}
 
 <style>
+    
     #sidebar-left, #sidebar-right {
         will-change: transform;
         overscroll-behavior-y: contain;

@@ -1,6 +1,6 @@
 
-var sidebarOpen = function() {};
-var sidebarClose = function() {};
+var sidebarOpen = function(){};
+var sidebarClose = function(){};
 
 $(document).ready(function() {
     // Variables to store touch start coordinates and time
@@ -38,7 +38,6 @@ $(document).ready(function() {
 
         if (!touchStartedOnOverride) {
             touchStartedOnOverride = $(event.target).closest('.touch-override').length > 0;
-            
             var touchObj = event.touches[0];
             startX = touchObj.pageX;
             startY = touchObj.pageY;
@@ -60,41 +59,33 @@ $(document).ready(function() {
         if (touchStartedOnOverride){
             return; // Allow default behavior on touch-override elements
         } 
-        
-        //if (!isSwipe) {
-            var touchObj = event.touches[0];
-            var distX = touchObj.pageX - startX; // Horizontal distance
-            var distY = touchObj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
-            var elapsedTime = new Date().getTime() - startT; // Time elapsed
-            var velocityX = distX / elapsedTime; // Velocity of swipe
-    
-            if (Math.abs(velocityX) > 0.3 && Math.abs(distX) > 30) { // Check if the horizontal velocity is above a threshold
-                isSwipe = true;
-            }
+        var touchObj = event.touches[0];
+        var distX = touchObj.pageX - startX; // Horizontal distance
+        var distY = touchObj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
+        var elapsedTime = new Date().getTime() - startT; // Time elapsed
+        var velocityX = distX / elapsedTime; // Velocity of swipe
 
-            // If we haven't determined the direction yet
-            var moveX = event.touches[0].pageX;
-            var moveY = event.touches[0].pageY;
-            var diffX = moveX - startX;
-            var diffY = moveY - startY;        
-            if (!directionDetermined) {
-                directionDetermined = true;
-                isHorizontal = Math.abs(diffX) > Math.abs(diffY);
-            }
-            if(isHorizontal){
-                event.preventDefault();
-                sidebarMovement(distX, distY);
-            }
-            else {
-                //sheetMovement(distX, distY);
-            }
-            
-            
-        //}
-    
+        if (Math.abs(velocityX) > 0.3 && Math.abs(distX) > 30) { // Check if the horizontal velocity is above a threshold
+            isSwipe = true;
+        }
+
+        // If we haven't determined the direction yet
+        var moveX = event.touches[0].pageX;
+        var moveY = event.touches[0].pageY;
+        var diffX = moveX - startX;
+        var diffY = moveY - startY;        
+        if (!directionDetermined) {
+            directionDetermined = true;
+            isHorizontal = Math.abs(diffX) > Math.abs(diffY);
+        }
+        if(isHorizontal){
+            event.preventDefault();
+            sidebarMovement(distX, distY);
+        }
+        else {
+        }
     }
     
-
     // Function to handle touch end
     function onTouchEnd(event) {
         
@@ -107,8 +98,6 @@ $(document).ready(function() {
         var distX = touchObj.pageX - startX; // get horizontal dist traveled by finger while in contact with surface
         var distY = touchObj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
         var elapsedTime = new Date().getTime() - startT; // get time elapsed
-
-        
         var main_offset = main_screen.offset();
         var main_offset_viewport = {
             top: main_offset.top - $(window).scrollTop(),
@@ -142,12 +131,9 @@ $(document).ready(function() {
 
         // Check if gesture is a swipe based on time and distance
         if (isSwipe && elapsedTime <= swipeTimeThreshold) {
-
             if (Math.abs(distX) >= swipeThreshold && Math.abs(distY) <= swipeThreshold) {
                 if (distX < 0) {
                     // Swipe Left
-                    
-                    
                     if(main_offset.left > 0){
                         sidebarClose('left');
                     } else {
@@ -155,71 +141,50 @@ $(document).ready(function() {
                     }
                 } else {
                     // Swipe Right
-                    
-                    
                     if(main_offset.left < 0){
                         sidebarClose('right');
                     } else {
                         sidebarOpen('left');
                     }
-                    
                 }
             }
             if (Math.abs(distY) >= swipeThreshold && Math.abs(distX) <= swipeThreshold) {
                 if (distY < 0) {
                     // Swipe Up
-                    
-                    sheetClose('top');
-
                 } else {
-                    // Swipe Down
-                    
+                    // Swipe Down       
                 }
             }
-            
         } else if (!isSwipe && elapsedTime <= tapTimeThreshold && Math.abs(distX) <= tapMoveThreshold && Math.abs(distY) <= tapMoveThreshold) {
-            
             // Tap detected
-            
-
         } else if (!isSwipe && elapsedTime >= longTouchTime) {
-            
             // Long touch detected
-            
-
         }
-
 
         if(!isSwipe){
-            // only snap sidebars if slow scroll open/close
-            //if(directionDetermined && isHorizontal){
-                // Snap sidebars to where they should be ()
-                if (main_offset.left > 0 && main_offset.left <= sidebarWidth) {
-                    // Left sidebar logic
-                    if (Math.abs(main_offset.left) >= (sidebarWidth/2)) { // Closer to -sidebarWidth
-                        console.log("Left sidebar is closer to being open");
-                        sidebarOpen('left');
-                    } else { // Closer to 0
-                        console.log("Left sidebar is closer to being closed");
-                        sidebarClose('left');
-                    }
-                } else if (main_offset.left <= 0 && main_offset.left >= -sidebarWidth) {
-                    // Right sidebar logic
-                    if (main_offset.left <= -(sidebarWidth/2)) { // Closer to sidebarWidth
-                        console.log("Right sidebar is closer to being open");
-                        sidebarOpen('right');
-                        
-                    } else { // Closer to 0
-                        console.log("Right sidebar is closer to being closed");
-                        sidebarClose('right');
-                    }
+            // only snap sidebars if slow scroll open/close    
+            // Snap sidebars to where they should be ()
+            if (main_offset.left > 0 && main_offset.left <= sidebarWidth) {
+                // Left sidebar logic
+                if (Math.abs(main_offset.left) >= (sidebarWidth/2)) { // Closer to -sidebarWidth
+                    console.log("Left sidebar is closer to being open");
+                    sidebarOpen('left');
+                } else { // Closer to 0
+                    console.log("Left sidebar is closer to being closed");
+                    sidebarClose('left');
                 }
-            //}
+            } else if (main_offset.left <= 0 && main_offset.left >= -sidebarWidth) {
+                // Right sidebar logic
+                if (main_offset.left <= -(sidebarWidth/2)) { // Closer to sidebarWidth
+                    console.log("Right sidebar is closer to being open");
+                    sidebarOpen('right');
+                    
+                } else { // Closer to 0
+                    console.log("Right sidebar is closer to being closed");
+                    sidebarClose('right');
+                }
+            }
         }
-
-    
-
-
     }
 
 
@@ -299,7 +264,6 @@ $(document).ready(function() {
 
     sidebarOpen = function(side){
         
-        sheetClose();
         
         if(side == 'left'){
             sidebar_left.css({
@@ -395,7 +359,7 @@ $(document).ready(function() {
 
 
     // open menu triggers
-    $(document).on('click','a[href="#sidebar-left"]',function(e){
+    $(document).on('click','#sidebar-left',function(e){
         e.preventDefault();
         var sidebar_status = sidebarStatus();
         if(sidebar_status != 'none'){
@@ -404,7 +368,7 @@ $(document).ready(function() {
             sidebarOpen('left');
         }
     });
-    $(document).on('click','a[href="#sidebar-right"]',function(e){
+    $(document).on('click','#sidebar-right',function(e){
         e.preventDefault();
         if(sidebar_status != 'none'){
             sidebarClose('right');
@@ -413,127 +377,6 @@ $(document).ready(function() {
         }
     });
 
-
-    // // open and close sidebar when resizing, or on initial load
-    // function adjustSidebar() {
-    //     if ($(window).width() > 1280) {
-    //         sidebarOpen('left');
-    //     } else {
-    //         sidebarClose('left');
-    //     }
-    // }
-    // // Call adjustSidebar on resize
-    // $(window).resize(adjustSidebar);
-    // // Also call adjustSidebar when the document is ready
-    // $(document).ready(adjustSidebar);
-
-
-    function disableMain(){
-        $('main').css({
-            'touch-events':'none'
-        });
-    }
-    disableMain();
-
-
-
-    function sheetMovement(distX, distY){
-        var position_calc = main_offset.left + distX; // current position + drag amount
-        
-        // maximum slide constraints
-        if(position_calc < max_transform_left){
-            position_calc = max_transform_left;
-        }
-        if(position_calc > max_transform_right){
-            position_calc = max_transform_right;
-        }
-
-        // slide main screen
-        main_screen.css('transform', 'translateX(' + position_calc + 'px)');
-        
-        // slide sidebars in tandem with main view
-        sheet_top_position = '';
-
-        sidebar_left_position = position_calc - sidebarWidth;
-        sidebar_right_position = position_calc + sidebarWidth;
-        sidebar_left.css('transform', 'translate3d(' + sidebar_left_position + 'px, 0, 0)');
-        sidebar_right.css('transform', 'translate3d(' + sidebar_right_position + 'px, 0, 0)');
-
-        //updateOpacities();
-    }
-
-    function sheetStatus(){ 
-        var sheetStatus = 'none';
-        $('.sheet').each(function() {
-            if (isElementInView(this)) {
-                sheetStatus = 'visible';
-            } else {
-                sheetStatus = 'none';
-            }
-        });
-        return sheetStatus;
-    }
-    function isElementInView(element) {
-        var rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }    
-
-
-    function sheetClose(position){
-        $('.top-sheet').css({
-            'transform': 'translateY(-100%)',
-            'transition': 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
-            //'opacity': 0
-        },function(){
-            
-        });
-
-        main_screen.css({
-            'opacity' : 1
-        });      
-    }
-    function sheetOpen(position){
-        //console.log('sheet open');
-        $('.top-sheet').css({
-            'transform': 'translateY(0%)',
-            'transition': 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
-            //'opacity': 1
-        },function(){
-            
-        });     
-        
-        main_screen.css({
-            'opacity' : 0.2
-        });      
-    }
-    // tap background to close sheet
-    $(document).on('click', function(event) {
-        var sheet_status = sheetStatus();
-        //console.log(sheet_status);
-        
-        if(sheet_status != 'none'){ // check sheet is open
-            // Check if clicked outside of .sheet
-            if ($(event.target).closest('.sheet').length === 0 && !$(event.target).is('*[data-action="open-sheet-top"]')) {
-                //event.preventDefault();
-                event.stopPropagation();
-                sheetClose();
-            }
-        }
-    });  
-    // open sheet triggers
-    $(document).on('click','*[data-action="open-sheet-top"]',function(e){
-        e.preventDefault();
-        sheetOpen('top');
-    });
-    $(document).on('click','*[data-action="open-sheet-bottom"]',function(e){
-        e.preventDefault();
-        sheetOpen('bottom');
-    });
 });
 
 
@@ -541,54 +384,36 @@ $(document).ready(function() {
 
 
 
-// THIS MIGHT BE GOOD?
+// STICKY HEADER
 $(document).ready(function() {
     var lastScrollTop = 0;
     var headerTranslation = 0;
-    var footerTranslation = 0;
-
-    var $stickyFooter = $('#footer-nav');
-    var stickyFooterHeight = $stickyFooter.outerHeight();
     var $stickyHeader = $('#header-nav');
     var stickyHeaderHeight = $stickyHeader.outerHeight();
 
-    $('main').scroll(function() {
+    $('#main-screen').scroll(function() {
 
-        // these have to be re set when content is changed with ajax
-        if (!$stickyHeader.length || !$stickyFooter.length) {
-            $stickyFooter = $('#footer-nav');
-            stickyFooterHeight = $stickyFooter.outerHeight();
+        if (!$stickyHeader.length) {
             $stickyHeader = $('#header-nav');
             stickyHeaderHeight = $stickyHeader.outerHeight();
         }
-        
         var currentScrollTop = $(this).scrollTop();
         var scrollDelta = currentScrollTop - lastScrollTop;
 
         if (scrollDelta > 0) {
             // Scrolling down
             headerTranslation = Math.max(headerTranslation - scrollDelta, -stickyHeaderHeight);
-            //footerTranslation = Math.min(footerTranslation + scrollDelta, stickyFooterHeight);
         } else {
             // Scrolling up
             headerTranslation = Math.min(headerTranslation - scrollDelta, 0);
-            //footerTranslation = Math.max(footerTranslation + scrollDelta, 0);
         }
-
         // Calculate opacity based on translation
         var headerOpacity = 1 - Math.abs(headerTranslation / stickyHeaderHeight);
-        var footerOpacity = 1 - Math.abs(footerTranslation / stickyFooterHeight);
 
-        // Apply transformation and opacity
         $stickyHeader.css({
             'transform': 'translateY(' + headerTranslation + 'px)',
             'opacity': headerOpacity
         });
-        // $stickyFooter.css({
-        //     'transform': 'translateY(' + footerTranslation + 'px)',
-        //     'opacity': footerOpacity
-        // });
-
         lastScrollTop = currentScrollTop;
     });
 });
