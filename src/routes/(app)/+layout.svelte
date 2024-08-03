@@ -1,14 +1,15 @@
 <script lang="ts">
     import '$src/app.css';
     import * as config from '$src/config';
-    import { dev } from '$app/environment';
-    import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    import { page } from '$app/stores';
+    import { dev } from '$app/environment';
     import { browser } from '$app/environment';
     import { SignIn, SignOut } from '@auth/sveltekit/components';
-    import Announcement from '$src/components/Announcement.svelte';
     import { Bell, Settings} from 'lucide-svelte';
 
+    import Announcement from '$src/components/Announcement.svelte';
+    
     let path;
     function getPath(currentPath) {
         path = currentPath;
@@ -38,14 +39,14 @@
     <aside id="sidebar-left" class="shrink-0 sidebar overscroll-contain -translate-x-full bg-light max-w-[400px] w-[85vw] h-full fixed top-0 left-0 bottom-0 items-start overflow-y-auto scrollbar-none overflow-x-hidden border-color-10 box-border z-20 border-r-0 xl:border-r">    
         <div class="box-border flex flex-col w-full h-full p-8">
             <div class="flex items-center gap-4">
-                Hello
+                <slot />
             </div>
         </div>
     </aside>
 
-    <aside id="sidebar-right" class="sidebar translate-x-full bg-light  max-w-[400px] w-[85vw] fixed top-0 right-0 bottom-0 h-screen items-start overflow-y-auto scrollbar-none overflow-x-hidden border-r-0 border-color-20 box-border z-20">
+    <aside id="sidebar-right" class="sidebar translate-x-full bg-light max-w-[400px] w-[85vw] fixed top-0 right-0 bottom-0 h-screen items-start overflow-y-auto scrollbar-none overflow-x-hidden border-r-0 border-color-20 box-border z-20">
         <div class="flex flex-col h-full p-5 overflow-visible">
-            Nice
+            <slot />
         </div>
     </aside>
 
@@ -55,25 +56,27 @@
             <a class="block w-[35px]" href="/dashboard">
                 <img src="/images/logo-icon.svg" alt="ChatTMS">
             </a>
-            <nav class="flex items-center gap-8 text-base font-medium">
-                <a href="/dashboard" class="hover:opacity-80 {path === '/dashboard' ? 'opacity-100' : 'opacity-40'}">Dashboard</a>
+            <nav class="flex items-center gap-8 text-lg font-medium">
+                <!-- <a href="/dashboard" class="hover:opacity-80 {path === '/dashboard' ? 'opacity-100' : 'opacity-40'}">Dashboard</a> -->
                 <a href="/assistant" class="hover:opacity-80 {path === '/assistant' ? 'opacity-100' : 'opacity-40'}">Assistant</a>
+                <a href="/patients" class="hover:opacity-80 {path === '/patients' ? 'opacity-100' : 'opacity-40'}">Patients</a>
                 <a href="/surveys" class="hover:opacity-80 p-1 {path === '/surveys' ? 'opacity-100' : 'opacity-40'}">Surveys</a>
             </nav>
             <nav class="flex items-center gap-8 ml-auto">
-                <a href="/account/settings" class="p-2 -m-2 {path === '/account/settings' ? 'opacity-100' : 'opacity-40'}">
+                <a href="/account/settings" class="p-2 -m-2 hover:opacity-100 {path === '/account/settings' ? 'opacity-100' : 'opacity-60'}">
                     <Settings class="w-[22px] h-[22px]" />
                 </a>
-                <a href="/account/notifications" class="p-2 -m-2 {path === '/account/notifications' ? 'opacity-100' : 'opacity-40'}">
-                    <Bell class="w-[22px] h-[22px]" />
-                </a>
+                <!-- <a href="/account/notifications" class="relative p-2 -m-2 hover:opacity-100 {path === '/account/notifications' ? 'opacity-100' : 'opacity-60'}">
+                    <Bell class="w-[22px] h-[22px]"/>
+                    <span class="box-content absolute top-0 w-2 h-2 bg-red-500 border-2 rounded-full border-light right-1"></span>
+                </a> -->
                 <a href="/account/profile" class="block w-[40px] h-[40px]">
                     <img class="w-full h-full rounded-full" src="/images/profile.jpg" alt="Henry">
                 </a>
             </nav>
         </div>
         
-        <div class="flex flex-col p-10 grow">
+        <div class="flex flex-col grow">
             <slot />
             <!-- <div class="mt-gap">
                 {#if $page.data.session}
@@ -87,6 +90,7 @@
                 {/if}
             </div> -->
         </div>
+
     </main> 
 </div>
 

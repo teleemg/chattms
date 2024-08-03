@@ -1,7 +1,7 @@
 .btn {
 	/* @apply no-underline hover:cursor-pointer inline-flex gap-2 justify-center text-center items-center whitespace-nowrap py-[0.8em] px-[1.2em] text-dark bg-dark/10 hover:bg-dark/15 active:bg-dark/20 relative font-semibold; */
 
-	@apply py-[0.65em] px-[1.25em] font-semibold hover:cursor-pointer rounded-[0.5em] whitespace-nowrap;
+	@apply py-[0.65em] px-[1.25em] flex gap-[0.5em] items-center bg-dark/10 font-medium hover:cursor-pointer rounded-[0.5em] whitespace-nowrap;
 
 	&:focus {
 		@apply outline-none;
@@ -22,8 +22,11 @@
 .btn-light {
 	@apply bg-light text-dark !important;
 }
+.btn-outline{
+    @apply bg-transparent border-2 border-dark/20
+}
 .btn-transparent {
-	@apply bg-transparent text-inherit text-dark dark:text-light !important;
+	@apply bg-transparent text-inherit text-dark dark:text-light px-0 !important;
 }
 .btn-disabled,
 .btn:disabled {
