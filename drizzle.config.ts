@@ -12,7 +12,7 @@ import {
 
 export default defineConfig({
 	schema: './src/db/schema.ts',
-	out: './src/db/migrations',
+	out: './supabase/migrations',
 	dialect: 'postgresql',
 	dbCredentials: {
 		url: DATABASE_URL,

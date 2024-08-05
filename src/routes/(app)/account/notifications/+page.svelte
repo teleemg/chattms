@@ -6,8 +6,6 @@
     <title>Notifications - {config.siteName}</title>
 </svelte:head>
 
-<div class="flex items-start">
-    <div class="">
-        <h1 class="text-4xl font-semibold">Notifications</h1>
-    </div>
+<div class="pb-10 mb-10 border-b border-dark/10">
+    <h1 class="text-3xl leading-none">Notifications</h1>
 </div>

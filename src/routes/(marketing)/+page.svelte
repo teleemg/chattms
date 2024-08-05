@@ -21,7 +21,12 @@
         </a>
         <h1 class="font-[800] leading-tight text-6xl mb-5">{config.siteDescription}</h1>
         <h2 class="max-w-screen-sm text-xl font-medium leading-normal text-center opacity-60 md:text-2xl lg:text-2xl xl:text-2xl">Trained on thosands of research papers, technical manuals, and online journals.</h2>
-        <a href="/demo" class="mt-10 text-lg btn btn-primary">Try a demo</a>
+        {#if $page.data.session}
+            <a href="/demo" class="mt-10 text-lg btn">Open Assistant</a>
+        {:else}
+            <a href="/demo" class="mt-10 text-lg btn btn-primary">Try a demo</a>
+        {/if}
+        
     </div>
 
     <div class="flex flex-col gap-4 mx-auto mt-10 md:gap-5 lg:gap-6 xl:gap-7">

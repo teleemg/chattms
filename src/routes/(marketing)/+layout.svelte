@@ -158,22 +158,23 @@
                 <img src="images/logo.svg" class="block w-full h-auto" alt="ChatTMS">
             </a>
         </div>
-        <nav class="flex items-center justify-end w-full gap-8 font-medium">
+        <!-- <nav class="flex items-center justify-end w-full gap-8 font-medium">
             <a href="/features" class="transition opacity-60 hover:opacity-100">Features</a>
             <a href="/demo" class="transition opacity-60 hover:opacity-100">Demo</a>
             <a href="/pricing" class="transition opacity-60 hover:opacity-100">Pricing</a>
-            <a href="/dashboard" class=" transition-[50] opacity-60 hover:opacity-100">Dashboard</a>
-        </nav>
-        <div class="flex items-center">
+            <a href="/assistant" class=" transition-[50] opacity-60 hover:opacity-100">Dashboard</a>
+        </nav> -->
+        <div class="flex items-center ml-auto">
     
             <!-- <img alt="User avatar" src={$page.data?.session?.user?.image ?? "https://source.boringavatars.com/marble/120"} class="avatar"/> -->
             {#if $page.data.session}
-                <SignOut signOutPage="sign-out" className="">
+                <!-- <SignOut signOutPage="sign-out" className="">
                     <div slot="submitButton" class="border-2 btn bg-dark/10">Sign out</div>
-                </SignOut>
+                </SignOut> -->
+                <a href="/assistant" class="btn btn-primary">Dashboard</a>
             {:else}
                 <SignIn signInPage="sign-in" className="">
-                    <div slot="submitButton" class="border-2 btn bg-dark/10">Sign in</div>
+                    <div slot="submitButton" class="btn">Sign in</div>
                 </SignIn>
             {/if}
     
