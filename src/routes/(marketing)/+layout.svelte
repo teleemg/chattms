@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import { browser } from '$app/environment';
-    import { SignIn, SignOut } from '@auth/sveltekit/components';
     
 	// import Header from '$src/components/Header.svelte';
 	// import Footer from '$src/components/Footer.svelte';
@@ -117,7 +116,7 @@
 
 	<!-- Manifest and PWA options -->
 	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#000000" />
-	<link rel="manifest" href="site.webmanifest" />
+	<link rel="manifest" href="/site.webmanifest" />
 	<meta name="theme-color" content="#ffffff" />
 	<meta name="msapplication-TileColor" content="#ffffff" />
 	<meta name="msapplication-config" content="browserconfig.xml" />
@@ -155,7 +154,7 @@
     <div id="navbar" class="z-30 flex items-center w-full gap-8 p-10 border-b border-dark/0 bg-light/80 dark:bg-dark/20">
         <div class="flex items-center">
             <a href="/" id="navbar-logo" class="w-full max-w-[180px]">
-                <img src="images/logo.svg" class="block w-full h-auto" alt="ChatTMS">
+                <img src="/images/logo.svg" class="block w-full h-auto" alt="ChatTMS">
             </a>
         </div>
         <!-- <nav class="flex items-center justify-end w-full gap-8 font-medium">
@@ -173,9 +172,10 @@
                 </SignOut> -->
                 <a href="/assistant" class="btn btn-primary">Dashboard</a>
             {:else}
-                <SignIn signInPage="sign-in" className="">
+                <!-- <SignIn signInPage="sign-in" className="">
                     <div slot="submitButton" class="btn">Sign in</div>
-                </SignIn>
+                </SignIn> -->
+                <a href="/auth/sign-in" class="btn btn-primary">Sign in</a>
             {/if}
     
         </div>

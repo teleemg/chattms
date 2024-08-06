@@ -185,9 +185,10 @@ inspector_port = 8083
 [auth.external.github]
 enabled = true
 client_id = "env(GITHUB_CLIENT_ID)"
-client_secret = "env(GITHUB_CLIENT_SECRET)"
+secret = "env(GITHUB_CLIENT_SECRET)"
 redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
 
+[analytics]
 enabled = true
 port = 54327
 # Configure one of the supported backends: `postgres`, `bigquery`.

@@ -14,23 +14,22 @@ Update social media image in /static/images/social.png
 
 Run "npm install" - Done.
 
+Starting local Supabase: "supabase start"
+Local Supabase details (url etc): "supabase status"
+
 Framework: Sveltekit
-UI Components: Bits UI
 Database: Drizzle ORM + Supabase
-Authentication: Auth.js
+Authentication: Supabase
 Payments: Stripe
-Admin panel: ???
-Transactional email: Postmark or Resend
+Transactional email: Postmark
 Hosting & deployment: Vercel
-Analytics: Mixpanel or PostHog
-Customer support: ???
-Forms: Superforms
-Changelog / feature tracker: ???
 CSS: TailwindCSS
 Icons: Lucide
 Fonts: Google Fonts or Geist (vercel.com/font)
-Error monitoring: Sentry
 
-
-Authentication docs:
-https://authjs.dev/reference/sveltekit
+Error monitoring: Sentry ???
+Analytics: Mixpanel or PostHog ???
+Customer support: ???
+Admin panel: ???
+Changelog / feature tracker: ???
+Forms: Superforms ???
