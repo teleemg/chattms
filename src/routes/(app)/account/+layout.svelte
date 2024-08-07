@@ -1,5 +1,5 @@
 <script type="ts">
-    import { SignIn, SignOut } from '@auth/sveltekit/components';
+    
     import { page } from '$app/stores';
 
     let path;
@@ -19,20 +19,7 @@
             <a href="/account/billing" class="py-2.5 text-lg hover:opacity-100 {path === '/account/billing' ? 'opacity-100' : 'opacity-50'}">Billing</a>
             <a href="/account/settings" class="py-2.5 text-lg hover:opacity-100 {path === '/account/settings' ? 'opacity-100' : 'opacity-50'}">Settings</a>
             <a href="/account/help-center" class="py-2.5 text-lg hover:opacity-100 {path === '/account/help-center' ? 'opacity-100' : 'opacity-50'}">Help center</a>
-            <SignOut signOutPage="sign-out" className="py-2.5 mt-auto text-lg opacity-70 hover:opacity-100">
-                <div slot="submitButton" class="">Sign out</div>
-            </SignOut>
-            <!-- <div class="mt-gap">
-                {#if $page.data.session}
-                    <SignOut signOutPage="sign-out" className="">
-                        <div slot="submitButton" class="border-2 btn bg-dark/10">Sign out</div>
-                    </SignOut>
-                {:else}
-                    <SignIn signInPage="sign-in" className="">
-                        <div slot="submitButton" class="border-2 btn bg-dark/10">Sign in</div>
-                    </SignIn>
-                {/if}
-            </div> -->
+            <a href="/auth/sign-out" class="py-2.5 mt-auto text-lg opacity-70 hover:opacity-100">Sign out</a>
         </nav>
     </div>
 

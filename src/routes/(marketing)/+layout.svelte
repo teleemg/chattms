@@ -164,20 +164,12 @@
             <a href="/assistant" class=" transition-[50] opacity-60 hover:opacity-100">Dashboard</a>
         </nav> -->
         <div class="flex items-center ml-auto">
-    
             <!-- <img alt="User avatar" src={$page.data?.session?.user?.image ?? "https://source.boringavatars.com/marble/120"} class="avatar"/> -->
             {#if $page.data.session}
-                <!-- <SignOut signOutPage="sign-out" className="">
-                    <div slot="submitButton" class="border-2 btn bg-dark/10">Sign out</div>
-                </SignOut> -->
                 <a href="/assistant" class="btn btn-primary">Dashboard</a>
             {:else}
-                <!-- <SignIn signInPage="sign-in" className="">
-                    <div slot="submitButton" class="btn">Sign in</div>
-                </SignIn> -->
                 <a href="/auth/sign-in" class="btn btn-primary">Sign in</a>
             {/if}
-    
         </div>
     </div>
 

@@ -2,9 +2,6 @@
 	import * as config from '$src/config';
     import { Sparkles, ArrowRight, CirclePlay, Joystick } from 'lucide-svelte';
     import { page } from '$app/stores';
-
-    export let data;
-    console.log(data.profiles);
 </script>
 
 <svelte:head>

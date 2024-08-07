@@ -5,7 +5,7 @@
     import { page } from '$app/stores';
     import { dev } from '$app/environment';
     import { browser } from '$app/environment';
-    import { SignIn, SignOut } from '@auth/sveltekit/components';
+    //import { SignIn, SignOut } from '@auth/sveltekit/components';
     import { Bell, Settings, CircleUser, BotMessageSquare, NotepadText} from 'lucide-svelte';
 
     import Announcement from '$src/components/Announcement.svelte';
